@@ -1,5 +1,5 @@
 [project]
-name = "llm-app-tranings"
+name = "llm-app-trainings"
 version = "0.1.0"
 description = "「実践LLM アプリケーション開発」の演習用コード"
 readme = "README.md"
