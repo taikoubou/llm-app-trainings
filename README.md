@@ -1,50 +1,80 @@
-## 📋 前提条件 (Prerequisites)
+# 実践LLMアプリケーション開発 演習リポジトリ
 
-このプロジェクトは、以下の環境で動作確認を行っています。
+書籍「実践LLMアプリケーション開発」の演習用コードをまとめたリポジトリです。
 
-- **OS**: macOS (M1/M2/M3 シリーズ推奨、Windows/Linuxでも動作可)
-- **Python**: `3.12.x` (推奨)
-- **Ollama**: 最新版 (アプリ版を起動しておいてください)
+## 📁 リポジトリ構成
 
-## 🚀 セットアップと起動方法
+```
+llm-app-trainings/
+├── pyproject.toml          # uvワークスペース設定
+├── uv.lock                 # 依存関係ロックファイル
+├── chapter01/
+│   └── pdf_summary/        # PDF要約チャットボット
+├── chapter02/
+│   └── .../
+└── .../
+```
 
-このプロジェクトは、高速な Python パッケージマネージャーである `uv` を使用しています。
+## 🛠️ 前提条件
 
-### 仮想環境（.venv）を作成
+- **Python**: 3.12.x
+- **uv**: 最新版
+- **Ollama**: 最新版（アプリを起動しておいてください）
 
-`uv venv`
+## 🚀 セットアップ
 
-### 仮想環境をアクティベート（Mac / Linux）
+### 1. uvのインストール
 
-`source .venv/bin/activate`
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-### ライブラリのインストール
+### 2. 依存関係のインストール
 
-`uv pip install -e '.[dev]'`
+```bash
+uv sync --all-extras
+```
 
-### 埋め込み用モデルの取得
+### 3. Ollamaモデルの取得
 
-`ollama pull bge-m3`
+各演習で使用するモデルを取得してください。
 
-### チャット・要約用モデルの取得
+```bash
+# 埋め込みモデル
+ollama pull bge-m3
 
-`ollama pull qwen2.5:1.5b`
+# チャット・要約モデル
+ollama pull qwen2.5:1.5b
+```
 
-### 実行
+## 📖 各章の内容
 
-`uv run python app.py`
+| 章         | テーマ                |
+| ---------- | --------------------- |
+| Chapter 01 | PDF要約チャットボット |
+| Chapter 02 | (追加予定)            |
 
-### 🛠️ 開発者向け：コードの整形 (Ruff)
+各章の詳細は章ごとの `README.md` を参照してください。
+
+## ▶️ 演習の起動方法
+
+```bash
+# 演習のディレクトリに移動して起動
+cd chapter01/pdf_summary
+uv run python app.py
+```
+
+## 🔧 開発者向け
 
 ```bash
 # コードのチェックと自動修正
 ruff check --fix
 
-# コードのフォーマット（見た目の整形）
+# コードのフォーマット
 ruff format
 ```
 
-### 追記
+## 📝 補足
 
-- 環境変数はconfig.pyにまとめているので適宜変えてください
-- gr.State で履歴を管理するようにするかも（実験用だったので今回は入れてない）
+- 各演習の設定は `config.py` にまとめています。モデル名やパラメータは適宜変更してください。
+- OllamaはデフォルトでHTTP `localhost:11434` で起動します。

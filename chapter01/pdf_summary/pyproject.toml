@@ -1,0 +1,24 @@
+[project]
+name = "pdf_summary"
+version = "0.1.0"
+description = "「実践LLM アプリケーション開発」の演習用コード"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-ollama",
+    "langchain-chroma",
+    "langchain-community",
+    "pypdf",
+    "gradio"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff"
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
